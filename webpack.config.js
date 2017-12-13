@@ -2,6 +2,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin'); //installed via npm
 const targetPath = __dirname + "/" + 'dist';
+//const variables = require('./src/common/js/constants.js');
 
 // the path(s) that should be cleaned
 let pathsToClean = ['dist', 'build'];
@@ -26,7 +27,7 @@ module.exports = {
     path: targetPath,
     filename: 'bundle.js'
   },
-  module: {
+    module: {
     rules: [
       /*
       your other rules for JavaScript transpiling go in here
@@ -52,7 +53,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       hash: true,
-      title: 'My Homepage title',
+      title: variables.home,
       myPageHeader: 'Homepage',
       template: './src/index.html',
       //chunks: ['vendor', 'app'],
@@ -60,7 +61,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       hash: true,
-      title: 'About page title',
+      title: variables.about,
       myPageHeader: 'About Page',
       template: './src/components/about/index.html',
       //chunks: ['vendor', 'settings'],
