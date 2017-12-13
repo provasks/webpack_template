@@ -1,0 +1,4 @@
+// include another .scss file from a sub-directory
+@import 'common/scss/_color.scss';
+@import 'common/scss/_global.scss';
+@import 'components/about/about.scss';
