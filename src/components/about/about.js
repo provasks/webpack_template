@@ -1,5 +1,6 @@
-console.log('about.js');
-// let button = document.getElementById("btnTest");
-// button.addEventListener("click",function(){
-//     alert('Hi');
-// })
+/* about.js */
+import * as Util  from '../../common/js/utils.js';
+let util = new Util();
+util.bindEventListener('button','click',function(){
+    alert('hee');
+})

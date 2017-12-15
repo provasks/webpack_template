@@ -21,6 +21,7 @@ module.exports = {
     './src/common/css/plain_css.css',
     './src/main.scss',
     //Javascripts
+    './src/common/js/utils.js',
     './src/app.js',
     './src/components/about/about.js',
   ],
@@ -71,7 +72,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/components/about/index.html',
       filename: 'about/index.html',
-      chunks: ['about'],
+      // chunks: ['about'],
     })
   ],
 };
