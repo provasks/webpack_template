@@ -1,6 +1,7 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin'); //installed via npm
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const targetPath = __dirname + "/" + 'dist';
 //const variables = require('./src/common/js/constants.js');
 
@@ -27,12 +28,9 @@ module.exports = {
     path: targetPath,
     filename: 'bundle.js'
   },
-    module: {
+  module: {
     rules: [
-      /*
-      your other rules for JavaScript transpiling go in here
-      */
-      { // css / sass / scss loader for webpack
+      {
         test: /\.(css|sass|scss)$/,
         use: ExtractTextPlugin.extract({
           use: [
@@ -41,7 +39,18 @@ module.exports = {
           ],
           publicPath: '/dist'
         })
-      }
+      },
+      // {
+      //   test: /\.(jpg|png)$/,
+      //   use: [{
+      //     loader: 'file-loader',
+      //     options: {
+      //       name: '[name].[ext]',
+      //       outputPath: 'img/',
+      //       publicPath: 'img/'
+      //     }  
+      //   }]
+      // }
     ],
   },
   devtool: 'source-map',
@@ -51,21 +60,18 @@ module.exports = {
       filename: "[name].bundle.css",
       allChunks: true
     }),
+    new CopyWebpackPlugin([
+      { from: "src/img", to: "img"}]
+    ),
     new HtmlWebpackPlugin({
-      hash: true,
-      title: variables.home,
-      myPageHeader: 'Homepage',
-      template: './src/index.html',
-      //chunks: ['vendor', 'app'],
-      filename: 'index.html' //relative to root of the application
+      template: 'src/index.html',
+      filename: 'index.html', //relative to root of the application
+      // chunks: ['app']
     }),
     new HtmlWebpackPlugin({
-      hash: true,
-      title: variables.about,
-      myPageHeader: 'About Page',
       template: './src/components/about/index.html',
-      //chunks: ['vendor', 'settings'],
-      filename: './about/index.html'
+      filename: 'about/index.html',
+      chunks: ['about'],
     })
   ],
 };

@@ -4,9 +4,8 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server",
-    "build": "webpack"
+    "build": "webpack -p"
   },
   "keywords": [],
   "author": "",
@@ -17,9 +16,13 @@
   },
   "dependencies": {
     "clean-webpack-plugin": "^0.1.17",
+    "copy-webpack-plugin": "^4.2.3",
     "css-loader": "^0.28.7",
+    "file-loader": "^1.1.5",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "webpack-dev-middleware": "^2.0.1",
+    "webpack-dev-server": "^2.9.7"
   }
 }
