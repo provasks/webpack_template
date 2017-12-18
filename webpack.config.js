@@ -20,9 +20,10 @@ module.exports = {
     //css
     './src/common/css/plain_css.css',
     './src/main.scss',
+
     //Javascripts
-    './src/common/js/utils.js',
     './src/app.js',
+    './src/common/js/utils.js',
     './src/components/about/about.js',
   ],
   output: {
